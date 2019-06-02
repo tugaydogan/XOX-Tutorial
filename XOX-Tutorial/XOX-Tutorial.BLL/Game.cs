@@ -19,6 +19,8 @@ namespace XOX_Tutorial.BLL
         public Player Player2 { get; set; }
         public Player ActivePlayer { get; set; }
         public bool IsOver { get; set; }
+        public bool IsDraw { get; set; }
+        public int TotalMoves { get; set; }
 
         public Game()
         {
@@ -38,7 +40,7 @@ namespace XOX_Tutorial.BLL
             new List<int>(){2,4,6}
         };
 
-        public string[] symbolArray = new string[9];
+        private string[] symbolArray = new string[9];
 
         public void StartGame()
         {
@@ -48,11 +50,25 @@ namespace XOX_Tutorial.BLL
 
         public void PlayTurn(int fieldIndex)
         {
-            symbolArray[fieldIndex] = ActivePlayer.Symbol;
-            if (IsGameOver(fieldIndex))
+            if(ActivePlayer == Player1)
             {
-                GameOver(this, GetWinningConditions());
-                return;
+                symbolArray[fieldIndex] = Player1.Symbol;
+                TotalMoves++;
+                if (IsGameOver(fieldIndex))
+                {
+                    GameOver(this, GetWinningConditions());
+                    return;
+                }
+            }
+            else
+            {
+                symbolArray[fieldIndex] = Player2.Symbol;
+                TotalMoves++;
+                if (IsGameOver(fieldIndex))
+                {
+                    GameOver(this, GetWinningConditions());
+                    return;
+                }
             }
             ActivePlayer = ActivePlayer == Player1 ? Player2 : Player1;
             TurnChanged(this);
@@ -78,6 +94,21 @@ namespace XOX_Tutorial.BLL
                 if (symbolArray[condition[0]] == symbolArray[condition[1]] && symbolArray[condition[0]] == symbolArray[condition[2]])
                 {
                     IsOver = true;
+                    IsDraw = false;
+                    break;
+                }
+                else if(symbolArray[condition[0]] == symbolArray[condition[1]] &&
+                     symbolArray[condition[1]] == symbolArray[condition[2]] && TotalMoves == 9)
+                {
+                    IsOver = true;
+                    IsDraw = false;
+                    break;
+                }
+                else if(symbolArray[condition[0]] != symbolArray[condition[1]] &&
+                     symbolArray[condition[1]] != symbolArray[condition[2]] && TotalMoves == 9)
+                {
+                    IsOver = true;
+                    IsDraw = true;
                     break;
                 }
             }

@@ -46,6 +46,7 @@ namespace XOX_Tutorial.UI
             lbl_player1.Text = game.Player1.Name + " : " + game.Player1.Score;
             lbl_player2.Text = game.Player2.Name + " : " + game.Player2.Score;
             changeActiveLabel();
+            game.GameOver += new XOXGameOverHandler(game_Over);
         }
 
         private void changeActiveLabel()
@@ -67,6 +68,7 @@ namespace XOX_Tutorial.UI
             var btn = (sender as Button);
             var fieldIndex = Convert.ToInt32(btn.Tag);
             btn.Text = game.ActivePlayer.Symbol;
+            changeActiveLabel();
             game.PlayTurn(fieldIndex);
         }
 
@@ -77,7 +79,7 @@ namespace XOX_Tutorial.UI
 
         private void game_Over(Game game,List<List<int>> winningConditions)
         {
-            string winnerPlayer="";
+            string winnerPlayer= null;
             game.ActivePlayer.WinTheGame();
             lbl_player1.Text = game.Player1.Name + " : " + game.Player1.Score;
             lbl_player2.Text = game.Player2.Name + " : " + game.Player2.Score;
@@ -91,17 +93,17 @@ namespace XOX_Tutorial.UI
             if (game.IsOver)
             {
                 DisableButtons();
-                if(game.ActivePlayer == game.Player1)
+                if (game.IsDraw == true)
+                {
+                    winnerPlayer = "Draw";
+                }
+                else if (game.ActivePlayer == game.Player1)
                 {
                     winnerPlayer = game.Player1.Name;
                 }
                 else if (game.ActivePlayer == game.Player2)
                 {
                     winnerPlayer = game.Player2.Name;
-                }
-                else
-                {
-                    MessageBox.Show("Draw");
                 }
             }
             PlayAgain(winnerPlayer);
