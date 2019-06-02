@@ -52,18 +52,16 @@
             this.lbl_player1.AutoSize = true;
             this.lbl_player1.Location = new System.Drawing.Point(38, 56);
             this.lbl_player1.Name = "lbl_player1";
-            this.lbl_player1.Size = new System.Drawing.Size(37, 13);
+            this.lbl_player1.Size = new System.Drawing.Size(0, 13);
             this.lbl_player1.TabIndex = 1;
-            this.lbl_player1.Text = "aaaaa";
             // 
             // lbl_player2
             // 
             this.lbl_player2.AutoSize = true;
             this.lbl_player2.Location = new System.Drawing.Point(392, 56);
             this.lbl_player2.Name = "lbl_player2";
-            this.lbl_player2.Size = new System.Drawing.Size(58, 13);
+            this.lbl_player2.Size = new System.Drawing.Size(0, 13);
             this.lbl_player2.TabIndex = 1;
-            this.lbl_player2.Text = "asadsdasd";
             // 
             // btn_Start
             // 
@@ -97,18 +95,18 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // XOXGame
+            // XOXGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,7 +116,7 @@
             this.Controls.Add(this.lbl_player1);
             this.Controls.Add(this.grp_Game);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "XOXGame";
+            this.Name = "XOXGameForm";
             this.Text = "XOX";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
